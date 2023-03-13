@@ -1,7 +1,9 @@
 <template>
   <div>
     <HeaderComponent />
-    <main class="movies"></main>
+    <main class="movies">
+      <EmptyMessage v-if="true" />
+    </main>
     <FooterComponent />    
   </div>
 </template>

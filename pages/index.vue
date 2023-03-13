@@ -1,7 +1,7 @@
 <template>
   <div>
     <HeaderComponent />
-    <!-- <h1 style="color: white; margin: auto; display: block; width: 100vw;">Home</h1> -->
+    <main class="movies"></main>
     <FooterComponent />    
   </div>
 </template>
@@ -28,4 +28,9 @@ export default {
 body {
   background-color: black;
 }
+
+main.movies {
+  height: calc(100vh - 115px);
+}
+
 </style>

@@ -23,7 +23,7 @@ header {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    background-color: rgb(25, 25, 25);
+    background-color: rgb(17, 17, 17);
     color: white;
     padding: 10px;
     border-bottom: 2px solid rgb(255, 0, 51);
@@ -40,7 +40,7 @@ header {
 #search {
     display: flex;
     align-items: center;
-    background-color: rgb(35, 35, 35);
+    background-color: rgb(30, 30, 30);
     padding: 9px;
     border-radius: 10px;
     border: 1.5px solid transparent;

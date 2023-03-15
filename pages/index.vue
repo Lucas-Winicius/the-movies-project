@@ -2,7 +2,8 @@
   <div>
     <HeaderComponent />
     <main class="movies">
-      <EmptyMessage v-if="true" />
+      <!-- <EmptyMessage v-if="true" /> -->
+      <LoadComponent />
     </main>
     <FooterComponent />    
   </div>
@@ -25,6 +26,7 @@ export default {
   padding: 0;
   margin: 0;
   font-family: 'Dosis', sans-serif;
+  user-select: none;
 }
 
 body {

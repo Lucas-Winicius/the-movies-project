@@ -3,7 +3,7 @@
     <HeaderComponent />
     <main class="movies">
       <!-- <EmptyMessage v-if="true" /> -->
-      <LoadComponent />
+      <LoadComponent class="temp" />
     </main>
     <FooterComponent />    
   </div>
@@ -21,6 +21,13 @@ export default {
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Dosis:wght@200;300;400;500;600;700;800&display=swap');
+
+.temp {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
 
 * {
   padding: 0;

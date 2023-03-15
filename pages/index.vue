@@ -2,32 +2,49 @@
   <div>
     <HeaderComponent />
     <main class="movies">
-      <!-- <EmptyMessage v-if="true" /> -->
-      <LoadComponent class="temp" />
+      <ErrorMessage
+        :errorCode="movies.status_code"
+        :textMessage="movies.status_message"
+        v-if="(movies.length < 1 && !loading) || movies.success == false"
+      />
+      <LoadComponent v-if="loading" />
     </main>
-    <FooterComponent />    
+    <FooterComponent />
   </div>
 </template>
 
 <script>
-
 export default {
   name: 'IndexPage',
+  data() {
+    return {
+      loading: true,
+      movies: {},
+    }
+  },
   head: {
-    title: 'Home'
-  }
+    title: 'Home',
+  },
+  async mounted() {
+    try {
+      // API call
+      const response = await fetch(
+        `https://api.themoviedb.org/3/trending/all/day?api_key=${this.$config.API_KEY}`
+      )
+      const json = await response.json()
+      this.movies = json
+      console.log(JSON.stringify(this.movies))
+    } catch (err) {
+      console.error(err.message)
+    } finally {
+      this.loading = false
+    }
+  },
 }
 </script>
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Dosis:wght@200;300;400;500;600;700;800&display=swap');
-
-.temp {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
 
 * {
   padding: 0;
@@ -41,7 +58,9 @@ body {
 }
 
 main.movies {
-  height: calc(100vh - 115px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 115px);
 }
-
 </style>

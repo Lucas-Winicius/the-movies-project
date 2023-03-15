@@ -1,7 +1,7 @@
 <template>
     <div id="emptyMessage">
-        <p>Tudo está tão vazio...</p>
-        <small>Algo não esta certo tente novamente em instantes.</small>
+        <p>It's so empty here...</p>
+        <small>Something isn't right, try again in a moment.</small>
     </div>
 </template>
 
@@ -14,7 +14,7 @@ export default {
 <style scoped>
 #emptyMessage {
   text-align: center;
-  color: rgb(229, 229, 229);
+  color: rgb(135, 135, 135);
   font-size: 2.5em;
   position: absolute;
   top: 50%;
@@ -25,7 +25,7 @@ export default {
 }
 
 #emptyMessage > small {
-  color: yellow;
+  color: rgb(255, 2, 0);
   font-size: .5em;
 }
 </style>

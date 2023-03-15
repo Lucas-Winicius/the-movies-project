@@ -2,12 +2,21 @@
   <div>
     <HeaderComponent />
     <main class="movies">
+      <!-- ON ERROR -->
       <ErrorMessage
         :errorCode="movies.status_code"
         :textMessage="movies.status_message"
         v-if="(movies.length < 1 && !loading) || movies.success == false"
       />
+
+      <!-- Load -->
       <LoadComponent v-if="loading" />
+
+      <!-- MOVIE SHOWCASE -->
+      <div>
+        <h1>Tranding</h1>
+        <MovieShowcase v-for="(movie, index) in movies.results" :key="index" :adult="movie.adult" :title="movie.title" :original_language="movie.original_language" :poster_path="movie.poster_path" />
+      </div>
     </main>
     <FooterComponent />
   </div>

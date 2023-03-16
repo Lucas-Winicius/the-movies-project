@@ -41,7 +41,6 @@ export default {
       )
       const json = await response.json()
       this.movies = await json
-      console.log(JSON.stringify(this.movies))
     } catch (err) {
       console.error(err.message)
     } finally {

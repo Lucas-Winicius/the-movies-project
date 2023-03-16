@@ -1,5 +1,5 @@
 <template>
-  <div class="posterContainer">
+  <div class="posterContainer" @click="movieDetails">
     <div :class="[ popular ? 'popular' : 'none' ]">Popular <i class="fa-solid fa-fire"></i></div>
     <img :src="fullImagePath" :alt="title" :title="title" />
     <div :class="[ adult ? 'ageageMajority' : 'none' ]">18</div>
@@ -21,6 +21,12 @@ export default {
     fullImagePath() {
       return `${this.$config.IMAGE_URL}${this.poster_path}`.toString()
     },
+  },
+  methods: {
+    movieDetails(e) {
+      const currentURL = location.href;
+      location.href = `${currentURL}details/${this.id_code}`
+    }
   }
 }
 </script>
@@ -32,11 +38,12 @@ export default {
 
 .posterContainer {
   margin: 10px 10px;
+  transition: .5s;
+  cursor: pointer;
 }
 
 img {
-  width: 23vw;
-  max-width: 245px;
+  width: 245px;
   border: 2px solid yellow;
   border-radius: 10px;
 }
@@ -73,6 +80,10 @@ div.popular > i {
   top: -38px;
   right: 15px;
   border-radius: 5px;
+}
+
+.posterContainer:hover {
+  transform: translateY(-20px);
 }
 
 </style>

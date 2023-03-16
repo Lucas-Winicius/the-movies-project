@@ -12,19 +12,10 @@
 
       <!-- Load -->
       <LoadComponent v-if="loading" class="center"/>
-
+      
       <!-- MOVIE SHOWCASE -->
-      <div>
-        <h1>Tranding</h1>
-        <MovieShowcase
-          v-for="(movie, index) in movies.results"
-          :key="index"
-          :adult="movie.adult"
-          :title="movie.title"
-          :original_language="movie.original_language"
-          :poster_path="movie.poster_path"
-        />
-      </div>
+      <MoviesContainer title="Tranding" :movies="movies"/>
+
     </main>
     <FooterComponent />
   </div>
@@ -46,10 +37,10 @@ export default {
     try {
       // API call
       const response = await fetch(
-        `https://api.themoviedb.org/3/trending/all/day?api_key=${this.$config.API_KEY}a`
+        `https://api.themoviedb.org/3/trending/all/day?api_key=${this.$config.API_KEY}`
       )
       const json = await response.json()
-      this.movies = json
+      this.movies = await json
       console.log(JSON.stringify(this.movies))
     } catch (err) {
       console.error(err.message)

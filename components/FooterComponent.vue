@@ -20,10 +20,9 @@ export default {
             const data = await response.json()
             this.instagram = data
         } catch(e) {
-            console.error('Não foi possivel localizar os contatos')
+            
         } finally {
             this.instagram = this.instagram.instagram.url || 'https://i.kym-cdn.com/photos/images/newsfeed/002/486/154/c06.gif'
-            console.log(this.instagram)
         }
     }
 }

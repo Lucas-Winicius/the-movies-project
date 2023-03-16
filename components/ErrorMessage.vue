@@ -1,14 +1,10 @@
 <template>
   <div id="emptyMessage">
     <p>
-      {{ errorCode ? `Error: ${errorCode}` : "It's so empty here..." }}
+      {{ errorCode }}
     </p>
     <small>
-      {{
-        textMessage
-          ? textMessage
-          : "Something isn't right, try again in a moment."
-      }}
+      {{ textMessage }}
     </small>
   </div>
 </template>
@@ -17,8 +13,11 @@
 export default {
   name: 'ErrorMessage',
   props: {
-    errorCode: { type: Number },
-    textMessage: { type: String }
+    'errorCode': { type: [String, Number], default: "It's so empty here..." },
+    'textMessage': {
+      type: String,
+      default: "Something isn't right, try again in a moment.",
+    },
   },
 }
 </script>
@@ -29,6 +28,11 @@ export default {
   color: rgb(135, 135, 135);
   font-size: 2.5em;
   pointer-events: none;
+
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 #emptyMessage > small {

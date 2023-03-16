@@ -4,9 +4,9 @@
     <main class="movies">
       <!-- ON ERROR -->
       <ErrorMessage
-        :errorCode="movies.status_code"
-        :textMessage="movies.status_message"
-        v-if="(movies.length < 1 && !loading) || movies.success == false"
+      v-if="(movies.length < 1 && !loading) || movies.success == false"
+      :error-code="movies.status_code"
+      :text-message="movies.status_message"
       />
 
       <!-- Load -->
@@ -15,7 +15,14 @@
       <!-- MOVIE SHOWCASE -->
       <div>
         <h1>Tranding</h1>
-        <MovieShowcase v-for="(movie, index) in movies.results" :key="index" :adult="movie.adult" :title="movie.title" :original_language="movie.original_language" :poster_path="movie.poster_path" />
+        <MovieShowcase
+          v-for="(movie, index) in movies.results"
+          :key="index"
+          :adult="movie.adult"
+          :title="movie.title"
+          :original_language="movie.original_language"
+          :poster_path="movie.poster_path"
+        />
       </div>
     </main>
     <FooterComponent />
@@ -38,7 +45,7 @@ export default {
     try {
       // API call
       const response = await fetch(
-        `https://api.themoviedb.org/3/trending/all/day?api_key=${this.$config.API_KEY}`
+        `https://api.themoviedb.org/3/trending/all/day?api_key=${this.$config.API_KEY}a`
       )
       const json = await response.json()
       this.movies = json

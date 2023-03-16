@@ -41,4 +41,14 @@ a {
     color: whitesmoke;
     text-decoration: none;
 }
+
+p {
+    animation: floating 3s infinite ease-in-out;
+}
+
+@keyframes floating {
+    0% { transform: translate(0,  0px); }
+    50%  { transform: translate(0, 5px); }
+    100%   { transform: translate(0, 0px); }   
+}
 </style>

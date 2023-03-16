@@ -1,7 +1,9 @@
 <template>
-  <div v-if="movies.results" class="trandingContainer">
+  <div v-if="movies.results" class="moviesContainer">
     <h1>{{ title }}</h1>
-    <MovieShowcase
+
+    <div class="movies">
+      <MovieShowcase
       v-for="movie in movies.results"
       :key="movie.id"
       :id_code="movie.id"
@@ -10,6 +12,8 @@
       :original_language="movie.original_language"
       :poster_path="movie.poster_path"
     />
+    </div>
+
   </div>
 </template>
 
@@ -29,12 +33,25 @@ export default {
 </script>
 
 <style scoped>
-.trandingContainer {
+.moviesContainer {
   width: 100vw;
   box-sizing: border-box;
-  margin: 15px;
+  margin: 10px 0px;
 }
-.trandingContainer > h1 {
+.moviesContainer > h1 {
   color: rgb(255, 200, 0);
+  margin-bottom: 20px;
+  margin-left: 1vw;
 }
+
+div.movies {
+  display: flex;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  width: 95vw;
+  margin: auto;
+}
+
+
 </style>

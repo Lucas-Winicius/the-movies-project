@@ -29,4 +29,10 @@ export default {
 * {
   color: white;
 }
+
+img {
+  width: 23vw;
+  max-width: 245px;
+}
+
 </style>

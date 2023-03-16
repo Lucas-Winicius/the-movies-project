@@ -7,10 +7,11 @@
       v-if="(movies.length < 1 && !loading) || movies.success == false"
       :error-code="movies.status_code"
       :text-message="movies.status_message"
+      class="center"
       />
 
       <!-- Load -->
-      <LoadComponent v-if="loading" />
+      <LoadComponent v-if="loading" class="center"/>
 
       <!-- MOVIE SHOWCASE -->
       <div>

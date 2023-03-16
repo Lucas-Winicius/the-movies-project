@@ -1,8 +1,6 @@
 <template>
   <div id="emptyMessage">
-    <p>
-      {{ errorCode }}
-    </p>
+    <p>Error: {{ errorCode }}</p>
     <small>
       {{ textMessage }}
     </small>
@@ -13,8 +11,8 @@
 export default {
   name: 'ErrorMessage',
   props: {
-    'errorCode': { type: [String, Number], default: "It's so empty here..." },
-    'textMessage': {
+    errorCode: { type: String, default: "It's so empty here..." },
+    textMessage: {
       type: String,
       default: "Something isn't right, try again in a moment.",
     },
@@ -29,7 +27,7 @@ export default {
   font-size: 2.5em;
   pointer-events: none;
 
-  position: relative;
+  position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);

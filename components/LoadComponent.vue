@@ -15,10 +15,13 @@ export default {
 
 <style scoped>
 .lds-ellipsis {
-  display: inline-block;
-  position: relative;
   width: 80px;
   height: 80px;
+  
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 .lds-ellipsis div {
   position: absolute;

@@ -11,6 +11,7 @@
       :title="movie.title"
       :original_language="movie.original_language"
       :poster_path="movie.poster_path"
+      :popular="true"
     />
     </div>
 
@@ -40,17 +41,16 @@ export default {
 }
 .moviesContainer > h1 {
   color: rgb(255, 200, 0);
-  margin-bottom: 20px;
   margin-left: 1vw;
 }
+
 
 div.movies {
   display: flex;
   overflow-x: scroll;
   overflow-y: hidden;
   scrollbar-width: thin;
-  width: 95vw;
-  margin: auto;
+  width: 100vw;
 }
 
 

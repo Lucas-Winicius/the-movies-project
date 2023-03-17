@@ -12,9 +12,14 @@
 
       <!-- Load -->
       <LoadComponent v-if="loading" class="center"/>
-      
-      <!-- MOVIE SHOWCASE -->
-      <MoviesContainer title="Tranding" :movies="movies"/>
+
+      <div>
+        <!-- MOVIE SHOWCASE -->
+        <MoviesContainer title="Tranding" :movies="movies"/>
+        
+        <!-- MOVIE POPULAR -->
+        <MoviesContainer title="Popular" :movies="popularMovies"/>
+      </div>     
 
     </main>
     <FooterComponent />
@@ -28,6 +33,7 @@ export default {
     return {
       loading: true,
       movies: {},
+      popularMovies: {}
     }
   },
   head: {
@@ -46,6 +52,20 @@ export default {
     } finally {
       this.loading = false
     }
+
+    try {
+      // API call
+      const response = await fetch(
+        `https://api.themoviedb.org/3/movie/popular?api_key=${this.$config.API_KEY}`
+      )
+      const json = await response.json()
+      this.popularMovies = await json
+    } catch (err) {
+      console.error(err.message)
+    } finally {
+      this.loading = false
+    }
+
   },
 }
 </script>

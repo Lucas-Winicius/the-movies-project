@@ -5,8 +5,8 @@
         </NuxtLink>
         
         <span id="search">
-            <input type="text">
-            <i id="searchButton" class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" v-model="inputValue">
+            <i id="searchButton" class="fa-solid fa-magnifying-glass" @click="search"></i>
         </span>
     </header>
 </template>
@@ -14,7 +14,14 @@
 <script>
 export default {
     name: 'HeaderComponent',
-    data() { return { }}
+    data() { return {
+        inputValue: this.$route.params.search || ''
+    }},
+    methods: {
+        search() {
+            location.href = `/search/1/${this.inputValue}`
+        }
+    }
 }
 </script>
 

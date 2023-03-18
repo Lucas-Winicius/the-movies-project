@@ -24,8 +24,7 @@ export default {
   },
   methods: {
     movieDetails(e) {
-      const currentURL = location.href;
-      location.href = `${currentURL}details/${this.id_code}`
+      location.href = `/details/${this.id_code}`
     }
   },
 }

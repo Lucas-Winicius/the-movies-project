@@ -41,13 +41,12 @@ export default {
   data() {
     return {
       clicked: false,
-      initialPosition: 0,
     }
   },
   methods: {
     handleScrollClick(e) {
       if (!this.clicked) return
-      let el
+      let el;
 
       if (e.target.classList.contains('movies')) el = e.target
       else if (e.target.parentElement.classList.contains('movies'))

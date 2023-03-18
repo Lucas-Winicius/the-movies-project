@@ -27,7 +27,7 @@ export default {
       const currentURL = location.href;
       location.href = `${currentURL}details/${this.id_code}`
     }
-  }
+  },
 }
 </script>
 

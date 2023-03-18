@@ -1,8 +1,9 @@
 <template>
   <div>
     <HeaderComponent />
+    <LoadComponent v-if="loading"  />
 
-    <div v-if="movieDetails" class="movieDetails">
+    <div v-if="movieDetails && !loading" class="movieDetails">
       <div class="detailsImage">
         <img
           :src="fullImagePath"
@@ -28,16 +29,21 @@ export default {
     return {
       movieID: this.$route.params.id,
       movieDetails: null,
+      loading: true,
     }
   },
   async mounted() {
-    const response = await fetch(
-      `https://api.themoviedb.org/3/movie/${this.movieID}?api_key=${this.$config.API_KEY}`
-    )
+    try {
+      const response = await fetch(
+        `https://api.themoviedb.org/3/movie/${this.movieID}?api_key=${this.$config.API_KEY}`
+      )
+      const data = await response.json()
+      this.movieDetails = data
 
-    const data = await response.json()
+    } catch(e) {
+      
+    } finally { this.loading = false }
 
-    this.movieDetails = data
   },
   computed: {
     fullImagePath() {
@@ -47,38 +53,5 @@ export default {
 }
 </script>
 <style scoped>
-.movieDetails {
-  min-height: calc(100vh - 115px);
-  display: flex;
-  justify-content: space-around;
-}
 
-.detailsImage {
-  width: 49vw;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.detailsText {
-  width: 49vw;
-  color: white;
-  box-sizing: border-box;
-  padding-top: 20px;
-}
-
-.detailsText > h1 {
-  margin-bottom: 10px;
-  user-select: text;
-}
-
-.detailsText > p {
-  text-align: justify;
-  padding-right: 30px;
-  user-select: text;
-}
-
-img {
-  width: 45%;
-}
 </style>

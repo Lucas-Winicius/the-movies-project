@@ -1,7 +1,7 @@
 <template>
   <div class="posterContainer" @click="movieDetails">
     <div :class="[ popular ? 'popular' : 'none' ]">Popular <i class="fa-solid fa-fire"></i></div>
-    <img :src="fullImagePath" :alt="title" :title="title" />
+    <img :src="fullImagePath" :alt="title" :title="title" class="moviePoster" />
     <div :class="[ adult ? 'ageageMajority' : 'none' ]">18</div>
   </div>
 </template>
@@ -37,15 +37,17 @@ export default {
 }
 
 .posterContainer {
-  margin: 10px 10px;
+  margin: 10px 20px;
   transition: .5s;
   cursor: pointer;
 }
 
-img {
+img.moviePoster {
   width: 245px;
   border: 2px solid yellow;
   border-radius: 10px;
+  
+  pointer-events: none;
 }
 
 div.none { display: none; }

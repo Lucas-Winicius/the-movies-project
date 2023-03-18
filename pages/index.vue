@@ -1,26 +1,20 @@
 <template>
   <div>
     <HeaderComponent />
-    <main class="movies">
+    <main class="moviesShowcase">
       <!-- ON ERROR -->
       <ErrorMessage
-      v-if="(movies.length < 1 && !loading) || movies.success == false"
-      :error-code="movies.status_code"
-      :text-message="movies.status_message"
-      class="center"
+        v-if="(movies.length < 1 && !loading) || movies.success == false"
+        :error-code="movies.status_code"
+        :text-message="movies.status_message"
+        class="center"
       />
 
       <!-- Load -->
-      <LoadComponent v-if="loading" class="center"/>
+      <LoadComponent v-if="loading" class="center" />
 
-      <div>
-        <!-- MOVIE SHOWCASE -->
-        <MoviesContainer title="Tranding" :movies="movies"/>
-        
-        <!-- MOVIE POPULAR -->
-        <MoviesContainer title="Popular" :movies="popularMovies"/>
-      </div>     
-
+      <!-- MOVIE SHOWCASE -->
+      <MoviesContainer title="Tranding" :movies="movies" />
     </main>
     <FooterComponent />
   </div>
@@ -33,7 +27,7 @@ export default {
     return {
       loading: true,
       movies: {},
-      popularMovies: {}
+      popularMovies: {},
     }
   },
   head: {
@@ -65,8 +59,7 @@ export default {
     } finally {
       this.loading = false
     }
-
-  },
+  }
 }
 </script>
 
@@ -84,7 +77,7 @@ body {
   background-color: black;
 }
 
-main.movies {
+main.moviesShowcase {
   display: flex;
   justify-content: center;
   align-items: center;

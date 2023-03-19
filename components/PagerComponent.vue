@@ -23,9 +23,10 @@ export default {
             const el = e.target
             const back = el.classList.contains('left')
             if(back && this.localPage === 1) return; 
-
+            
             if(!back) location.href = `/search/${this.localPage += 1}/${this.search}`
             if(back) location.href = `/search/${this.localPage -= 1}/${this.search}`
+            if(this.localPage >= this.pagesQuanty) location.href = `/search/${this.pagesQuanty}/${this.search}`
         }
     }
 }

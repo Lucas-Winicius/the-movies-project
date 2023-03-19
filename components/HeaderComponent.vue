@@ -25,6 +25,7 @@ export default {
   },
   methods: {
     search() {
+      if(!this.inputValue) return;
       location.href = `/search/1/${this.inputValue}`
     },
   },

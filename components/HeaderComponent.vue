@@ -4,7 +4,7 @@
             <h1>Movies</h1>
         </NuxtLink>
         
-        <span id="search">
+        <span id="search" @keypress.enter="search">
             <input type="text" v-model="inputValue">
             <i id="searchButton" class="fa-solid fa-magnifying-glass" @click="search"></i>
         </span>

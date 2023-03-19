@@ -24,7 +24,8 @@ export default {
   },
   methods: {
     movieDetails(e) {
-      location.href = `/details/${this.id_code}`
+      location.href = `/details/${this.id_code
+      }`
     }
   },
 }

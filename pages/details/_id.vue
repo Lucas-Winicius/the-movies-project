@@ -85,10 +85,12 @@ img.movieImage {
 
 .detailsText > h1 {
   margin-bottom: 15px;
+  user-select: text;
 }
 
 .detailsText > p {
   text-align: justify;
+  user-select: text;
 }
 
 .backButton {
@@ -101,7 +103,7 @@ img.movieImage {
 }
 
 .backButton:hover .arrowBack {
-  animation: arrowBackAnimation 1.3s linear infinite;
+  animation: arrowBackAnimation 1.5s backwards infinite;
 }
 
 @keyframes arrowBackAnimation {

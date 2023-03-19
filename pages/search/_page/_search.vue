@@ -5,12 +5,13 @@
       <LoadComponent v-if="loading" />
       <div v-if="moviesData" class="movies">
         <MovieSearch
-          v-for="(movie, index) in moviesData.results"
-          :movieDetails="movie"
-          :key="index"
+        v-for="(movie, index) in moviesData.results"
+        :movieDetails="movie"
+        :key="index"
         />
       </div>
     </div>
+    <PagerComponent v-if="moviesData" :pagesQuanty="moviesData.total_pages"/>
     <FooterComponent />
   </div>
 </template>
@@ -47,4 +48,13 @@ export default {
 .results {
   min-height: calc(100vh - 115px);
 }
+
+.movies {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: space-around;
+  margin: 30px 20px;
+}
+
 </style>

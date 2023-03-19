@@ -105,9 +105,14 @@ img.movieImage {
 }
 
 @keyframes arrowBackAnimation {
-  0% { transform: translateX(0px); }
-  50% { transform: translateX(-7px); }
-  100% { transform: translateX(1px); }
+  0% {
+    transform: translateX(0px);
+  }
+  50% {
+    transform: translateX(-7px);
+  }
+  100% {
+    transform: translateX(1px);
+  }
 }
-
 </style>

@@ -1,8 +1,10 @@
 <template>
   <div class="posterContainer" @click="movieDetails">
-    <div :class="[ popular ? 'popular' : 'none' ]">Popular <i class="fa-solid fa-fire"></i></div>
+    <div :class="[popular ? 'popular' : 'none']">
+      Popular <i class="fa-solid fa-fire"></i>
+    </div>
     <img :src="fullImagePath" :alt="title" :title="title" class="moviePoster" />
-    <div :class="[ adult ? 'ageageMajority' : 'none' ]">18</div>
+    <div :class="[adult ? 'ageageMajority' : 'none']">18</div>
   </div>
 </template>
 
@@ -15,7 +17,7 @@ export default {
     original_language: String,
     poster_path: String,
     id_code: Number,
-    popular: {type: Boolean, default: false},
+    popular: { type: Boolean, default: false },
   },
   computed: {
     fullImagePath() {
@@ -24,9 +26,8 @@ export default {
   },
   methods: {
     movieDetails(e) {
-      location.href = `/details/${this.id_code
-      }`
-    }
+      location.href = `/details/${this.id_code}`
+    },
   },
 }
 </script>
@@ -38,7 +39,7 @@ export default {
 
 .posterContainer {
   margin: 10px 20px;
-  transition: .5s;
+  transition: 0.5s;
   cursor: pointer;
 }
 
@@ -46,11 +47,13 @@ img.moviePoster {
   width: 245px;
   border: 2px solid yellow;
   border-radius: 10px;
-  
+
   pointer-events: none;
 }
 
-div.none { display: none; }
+div.none {
+  display: none;
+}
 
 div.popular {
   box-sizing: border-box;
@@ -68,7 +71,7 @@ div.popular {
 }
 
 div.popular > i {
-  color:  black;
+  color: black;
   margin-left: 3px;
 }
 
@@ -87,5 +90,4 @@ div.popular > i {
 .posterContainer:hover {
   transform: translateY(-20px);
 }
-
 </style>

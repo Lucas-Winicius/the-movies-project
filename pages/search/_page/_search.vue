@@ -2,16 +2,23 @@
   <div>
     <HeaderComponent />
     <div class="results">
-      <LoadComponent v-if="loading" />
-      <div v-if="moviesData" class="movies">
+      <div v-if="moviesData?.total_results" class="movies">
         <MovieSearch
-        v-for="(movie, index) in moviesData.results"
-        :movieDetails="movie"
-        :key="index"
+          v-for="(movie, index) in moviesData.results"
+          :movieDetails="movie"
+          :key="index"
         />
       </div>
     </div>
-    <PagerComponent v-if="moviesData" :pagesQuanty="moviesData.total_pages"/>
+    <ErrorMessage
+      v-if="!loading && !moviesData?.total_results"
+      textMessage="Try searching something else."
+    />
+    <LoadComponent v-if="loading" />
+    <PagerComponent
+      v-if="moviesData?.total_results"
+      :pagesQuanty="moviesData.total_pages"
+    />
     <FooterComponent />
   </div>
 </template>
@@ -28,7 +35,6 @@ export default {
     }
   },
   async mounted() {
-    document.title = this.search.charAt(0).toUpperCase() + this.search.slice(1)
     try {
       const response = await fetch(
         `https://api.themoviedb.org/3/search/movie?api_key=${this.$config.API_KEY}&query=${this.search}&page=${this.page}`
@@ -37,9 +43,11 @@ export default {
       this.moviesData = json
     } catch (e) {
       console.error(e.message)
+      document.title = 'Search Error'
     } finally {
       this.loading = false
     }
+    console.log(JSON.stringify(this.moviesData))
   },
 }
 </script>
@@ -56,5 +64,4 @@ export default {
   justify-content: space-around;
   margin: 30px 20px;
 }
-
 </style>

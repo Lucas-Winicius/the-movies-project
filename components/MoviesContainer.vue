@@ -51,7 +51,7 @@ export default {
       if (e.target.classList.contains('movies')) el = e.target
       else if (e.target.parentElement.classList.contains('movies'))
         el = e.target.parentElement
-      el.scrollLeft -= e.movementX
+      if(el) el.scrollLeft -= e.movementX
     },
     handleMouseDown(e) {
       this.clicked = true
@@ -68,12 +68,8 @@ export default {
   width: 100vw;
   box-sizing: border-box;
   margin: 10px 0px;
-  cursor: grab;
 }
 
-.moviesContainer:active {
-  cursor: grabbing;
-}
 .moviesContainer > h1 {
   color: rgb(255, 200, 0);
   margin-left: 1vw;
@@ -85,5 +81,11 @@ div.movies {
   overflow-y: hidden;
   scrollbar-width: thin;
   width: 100vw;
+  cursor: grab;
 }
+
+div.movies:active {
+  cursor: grabbing;
+}
+
 </style>

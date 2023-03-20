@@ -43,6 +43,10 @@ export default {
   cursor: pointer;
 }
 
+.posterContainer:active {
+  cursor: wait;
+}
+
 img.moviePoster {
   width: 245px;
   border: 2px solid yellow;

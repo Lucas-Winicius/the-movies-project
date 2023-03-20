@@ -3,22 +3,27 @@
     <HeaderComponent />
     <LoadComponent v-if="loading" />
 
-    <div v-if="movieDetails && !loading" class="movieDetails">
-      <div class="detailsImage">
-        <img
-          :src="fullImagePath"
-          :alt="movieDetails.original_title"
-          class="movieImage"
-        />
+    <div class="container">
+
+      <div v-if="!loading && !!movieDetails.id" class="movieDetails">
+        <div class="detailsImage">
+          <img
+            :src="fullImagePath"
+            :alt="movieDetails.original_title"
+            class="movieImage"
+          />
+        </div>
+        <div class="detailsText">
+          <h1>{{ movieDetails.original_title }}</h1>
+          <p>{{ movieDetails.overview }}</p>
+          <button @click="() => $router.go(-1)" class="backButton">
+            <i class="fa-solid fa-arrow-left arrowBack"></i> Go Back
+          </button>
+        </div>
       </div>
-      <div class="detailsText">
-        <h1>{{ movieDetails.original_title }}</h1>
-        <p>{{ movieDetails.overview }}</p>
-        <button @click="() => $router.go(-1)" class="backButton">
-          <i class="fa-solid fa-arrow-left arrowBack"></i> Go Back
-        </button>
-      </div>
+      <ErrorMessage v-if="!loading && !movieDetails.id" textMessage="Could not find this movie" />
     </div>
+
     <FooterComponent />
   </div>
 </template>
@@ -55,9 +60,12 @@ export default {
 </script>
 
 <style scoped>
+
+.container {
+  min-height: calc(100vh - 115px);
+}
 .movieDetails {
   color: whitesmoke;
-  min-height: calc(100vh - 115px);
   min-width: 100vw;
   display: flex;
   justify-content: space-around;

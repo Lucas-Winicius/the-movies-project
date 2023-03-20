@@ -35,8 +35,10 @@ export default {
   letter-spacing: 5px;
   margin: 30px 0px;
   transition: 1s;
-  transition-delay: 200ms;
+  transition-delay: 300ms;
   cursor: pointer;
+  box-sizing: border-box;
+  padding: 10px;
 }
 
 .container .image {
@@ -55,4 +57,28 @@ export default {
 .container:hover {
   transform: translateY(-30px);
 }
+
+@media (max-width: 645px) {
+
+  .container .image {
+    width: 25vw;
+  }
+
+} 
+
+@media (max-width: 450px) {
+
+  .container .image {
+    width: 35vw;
+  }
+}
+
+@media (max-width: 295px) {
+
+  .container .image {
+    width: 70vw;
+  }
+
+} 
+
 </style>

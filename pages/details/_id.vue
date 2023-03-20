@@ -125,4 +125,18 @@ img.movieImage {
     transform: translateX(1px);
   }
 }
+
+@media (max-width: 945px) {
+  .movieDetails {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 30px 10px;
+  }
+
+  .detailsImage, .detailsText {
+    width: 85vw;
+  }
+}
+
 </style>

@@ -85,9 +85,10 @@ body {
 }
 
 main.moviesShowcase {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  box-sizing: border-box;
   min-height: calc(100vh - 115px);
+  margin: 10px;
+  width: 90vw;
 }
+
 </style>

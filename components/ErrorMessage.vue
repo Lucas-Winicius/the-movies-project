@@ -26,6 +26,7 @@ export default {
   color: rgb(135, 135, 135);
   font-size: 2.5em;
   pointer-events: none;
+  width: 90vw;
 
   position: absolute;
   top: 50%;

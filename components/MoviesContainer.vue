@@ -65,7 +65,7 @@ export default {
 
 <style scoped>
 .moviesContainer {
-  width: 100vw;
+  width: 85vw;
   box-sizing: border-box;
   margin: 10px 0px;
 }

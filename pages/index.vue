@@ -10,11 +10,17 @@
         class="center"
       />
 
+      <div class="moviesShowcase">
+        <!-- MOVIE SHOWCASE -->
+        <MoviesContainer title="Tranding" :movies="movies" />
+
+        <!-- MOVIE SHOWCASE -->
+        <MoviesContainer title="Popular" :movies="popularMovies" />
+      </div>
+
       <!-- Load -->
       <LoadComponent v-if="loading" class="center" />
 
-      <!-- MOVIE SHOWCASE -->
-      <MoviesContainer title="Tranding" :movies="movies" />
     </main>
     <FooterComponent />
   </div>
@@ -75,6 +81,7 @@ export default {
 
 body {
   background-color: black;
+  overflow-x: hidden;
 }
 
 main.moviesShowcase {

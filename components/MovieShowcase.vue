@@ -48,10 +48,11 @@ export default {
 }
 
 img.moviePoster {
-  width: 245px;
+  max-width: 225px;
+  min-width: 145px;
+  width: 20vw;
   border: 2px solid yellow;
   border-radius: 10px;
-
   pointer-events: none;
 }
 

@@ -46,6 +46,7 @@ export default {
       document.title = 'Search Error'
     } finally {
       this.loading = false
+      document.title = this.search
     }
     console.log(JSON.stringify(this.moviesData))
   },

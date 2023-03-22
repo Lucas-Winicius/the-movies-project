@@ -14,8 +14,14 @@
         <!-- MOVIE SHOWCASE -->
         <MoviesContainer title="Tranding" :movies="movies" />
 
-        <!-- MOVIE SHOWCASE -->
+        <!-- Popular -->
         <MoviesContainer title="Popular" :movies="popularMovies" />
+
+        <!-- Popular -->
+        <MoviesContainer title="Latest" :movies="latest" />
+
+        <!-- Popular -->
+        <MoviesContainer title="Top Rated" :movies="topRated" />
       </div>
 
       <!-- Load -->
@@ -34,6 +40,8 @@ export default {
       loading: true,
       movies: {},
       popularMovies: {},
+      topRated: {},
+      latest: {},
     }
   },
   head: {
@@ -60,6 +68,32 @@ export default {
       )
       const json = await response.json()
       this.popularMovies = await json
+    } catch (err) {
+      console.error(err.message)
+    } finally {
+      this.loading = false
+    }
+
+    try {
+      // API call
+      const response = await fetch(
+        `https://api.themoviedb.org/3/movie/top_rated?api_key=${this.$config.API_KEY}`
+      )
+      const json = await response.json()
+      this.topRated = await json
+    } catch (err) {
+      console.error(err.message)
+    } finally {
+      this.loading = false
+    }
+
+    try {
+      // API call
+      const response = await fetch(
+        `https://api.themoviedb.org/3/movie/latest?api_key=${this.$config.API_KEY}`
+      )
+      const json = await response.json()
+      this.latest = await json
     } catch (err) {
       console.error(err.message)
     } finally {

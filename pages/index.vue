@@ -10,23 +10,24 @@
         class="center"
       />
 
-      <div class="moviesShowcase">
+      <div v-if="!loading" class="moviesShowcase">
         <!-- MOVIE SHOWCASE -->
         <MoviesContainer title="Tranding" :movies="movies" />
 
-        <!-- Popular -->
-        <MoviesContainer title="Popular" :movies="popularMovies" />
+        <!-- Upcoming -->
+        <MoviesContainer title="upcoming" :movies="upcoming" />
 
-        <!-- Popular -->
-        <MoviesContainer title="Latest" :movies="latest" />
-
-        <!-- Popular -->
+        <!-- Top Rated -->
         <MoviesContainer title="Top Rated" :movies="topRated" />
+      </div>
+
+      <div class="popularMovies">
+        <h1>Popular</h1>
+        <MovieView v-for="(movie, index) in popularMovies.results" :key="index" :movieDetails="movie"/>
       </div>
 
       <!-- Load -->
       <LoadComponent v-if="loading" class="center" />
-
     </main>
     <FooterComponent />
   </div>
@@ -40,65 +41,43 @@ export default {
       loading: true,
       movies: {},
       popularMovies: {},
+      upcoming: {},
       topRated: {},
-      latest: {},
     }
   },
   head: {
     title: 'Home',
   },
+  methods: {
+    async fetchMovies(url) {
+      try {
+        try {
+          const response = await fetch(url)
+          return await response.json()
+        } catch (error) {
+          console.error(error)
+        }
+      } finally {
+        this.loading = false
+      }
+    },
+  },
   async mounted() {
-    try {
-      // API call
-      const response = await fetch(
-        `https://api.themoviedb.org/3/trending/all/day?api_key=${this.$config.API_KEY}`
-      )
-      const json = await response.json()
-      this.movies = await json
-    } catch (err) {
-      console.error(err.message)
-    } finally {
-      this.loading = false
-    }
+    this.movies = await this.fetchMovies(
+      `https://api.themoviedb.org/3/trending/all/day?api_key=${this.$config.API_KEY}`
+    )
 
-    try {
-      // API call
-      const response = await fetch(
-        `https://api.themoviedb.org/3/movie/popular?api_key=${this.$config.API_KEY}`
-      )
-      const json = await response.json()
-      this.popularMovies = await json
-    } catch (err) {
-      console.error(err.message)
-    } finally {
-      this.loading = false
-    }
+    this.popularMovies = await this.fetchMovies(
+      `https://api.themoviedb.org/3/movie/popular?api_key=${this.$config.API_KEY}`
+    )
 
-    try {
-      // API call
-      const response = await fetch(
-        `https://api.themoviedb.org/3/movie/top_rated?api_key=${this.$config.API_KEY}`
-      )
-      const json = await response.json()
-      this.topRated = await json
-    } catch (err) {
-      console.error(err.message)
-    } finally {
-      this.loading = false
-    }
+    this.topRated = await this.fetchMovies(
+      `https://api.themoviedb.org/3/movie/top_rated?api_key=${this.$config.API_KEY}`
+    )
 
-    try {
-      // API call
-      const response = await fetch(
-        `https://api.themoviedb.org/3/movie/latest?api_key=${this.$config.API_KEY}`
-      )
-      const json = await response.json()
-      this.latest = await json
-    } catch (err) {
-      console.error(err.message)
-    } finally {
-      this.loading = false
-    }
+    this.upcoming = await this.fetchMovies(
+      `https://api.themoviedb.org/3/movie/upcoming?api_key=${this.$config.API_KEY}`
+    )
   },
 }
 </script>
@@ -114,8 +93,8 @@ export default {
 }
 
 body {
-  background-color: black;
   overflow-x: hidden;
+  background-color: black;
 }
 
 main.moviesShowcase {
@@ -125,4 +104,15 @@ main.moviesShowcase {
   width: 90vw;
 }
 
+.popularMovies {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  width: 97vw;
+}
+
+.popularMovies > h1 {
+  width: 90vw;
+  color: white;
+}
 </style>

@@ -3,7 +3,7 @@
     <HeaderComponent />
     <div class="results">
       <div v-if="moviesData?.total_results" class="movies">
-        <MovieSearch
+        <MovieView
           v-for="(movie, index) in moviesData.results"
           :movieDetails="movie"
           :key="index"
@@ -48,7 +48,6 @@ export default {
       this.loading = false
       document.title = this.search
     }
-    console.log(JSON.stringify(this.moviesData))
   },
 }
 </script>

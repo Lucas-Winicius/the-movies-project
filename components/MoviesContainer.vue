@@ -76,11 +76,11 @@ export default {
 }
 
 div.movies {
+  box-sizing: border-box;
   display: flex;
   overflow-x: scroll;
   overflow-y: hidden;
-  scrollbar-width: thin;
-  width: 100vw;
+  width: 98vw;
   cursor: grab;
 }
 

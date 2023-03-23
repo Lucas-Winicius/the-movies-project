@@ -15,7 +15,7 @@
         <MoviesContainer title="Tranding" :movies="movies" />
 
         <!-- Upcoming -->
-        <MoviesContainer title="upcoming" :movies="upcoming" />
+        <MoviesContainer title="Upcoming" :movies="upcoming" />
 
         <!-- Top Rated -->
         <MoviesContainer title="Top Rated" :movies="topRated" />
@@ -23,7 +23,11 @@
 
       <div class="popularMovies">
         <h1>Popular</h1>
-        <MovieView v-for="(movie, index) in popularMovies.results" :key="index" :movieDetails="movie"/>
+        <MovieView
+          v-for="(movie, index) in popularMovies.results"
+          :key="index"
+          :movieDetails="movie"
+        />
       </div>
 
       <!-- Load -->
@@ -48,20 +52,6 @@ export default {
   head: {
     title: 'Home',
   },
-  methods: {
-    async fetchMovies(url) {
-      try {
-        try {
-          const response = await fetch(url)
-          return await response.json()
-        } catch (error) {
-          console.error(error)
-        }
-      } finally {
-        this.loading = false
-      }
-    },
-  },
   async mounted() {
     this.movies = await this.fetchMovies(
       `https://api.themoviedb.org/3/trending/all/day?api_key=${this.$config.API_KEY}`
@@ -79,6 +69,20 @@ export default {
       `https://api.themoviedb.org/3/movie/upcoming?api_key=${this.$config.API_KEY}`
     )
   },
+  methods: {
+    async fetchMovies(url) {
+      try {
+        try {
+          const response = await fetch(url)
+          return await response.json()
+        } catch (error) {
+          console.error(error)
+        }
+      } finally {
+        this.loading = false
+      }
+    },
+  },
 }
 </script>
 
@@ -90,6 +94,7 @@ export default {
   margin: 0;
   font-family: 'Dosis', sans-serif;
   user-select: none;
+  scrollbar-width: thin;
 }
 
 body {

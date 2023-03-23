@@ -12,6 +12,6 @@ module.exports = {
   plugins: [],
   // add your custom rules here
   rules: {
-    'no-return-assign': false,
+    'no-return-assign': 0,
   },
 }

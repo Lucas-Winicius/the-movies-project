@@ -1,5 +1,5 @@
 # Shopping Cart
-![Preview](https://i.imgur.com/yeM1B8b.gif)
+![Preview](https://i.imgur.com/S90QKgO.png)
 
 ## What I've learned?
 In this project, I decided to do something different from my usual routine of watching a video to learn a new technology. This time, I chose to learn by just reading the documentation, and I must admit it was fun.
